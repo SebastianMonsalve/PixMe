@@ -1,0 +1,89 @@
+@media (max-width: 630px) {
+  .input-container {
+    width: 90%;
+    height: 3rem;
+  }
+  .Input-form {
+    width: 90%;
+    height: 3rem;
+    font-size: 1.4em;
+  }
+  .btn-loading {
+    width: 90%;
+    height: 4rem;
+  }
+  #password-toggle {
+    font-size: 1.6em;
+  }
+  .alert1 {
+    bottom: 9rem;
+  }
+  .alert2 {
+    bottom: 7.2rem;
+  }
+  .alert3 {
+    bottom: 5.4rem;
+  }
+  /*------------CREATE ACCOUNT-------------*/
+  .info {
+    padding: 0 1rem;
+    font-size: 0.7em;
+  }
+  .btn2,
+  .btn2rec {
+    bottom: 2rem;
+    font-size: 1em;
+  }
+  .btn2rec {
+    bottom: 4rem;
+  }
+
+  /*-----------------HOME-----------------*/
+  .Sidebar ul li .btn-sidebar-home .icon {
+    font-size: 2.2em;
+  }
+  .Sidebar ul li .btn-sidebar-home .text,
+  .Sidebar ul li .btn-sidebar-home .text-logo {
+    font-size: 1.3em;
+  }
+  .Sidebar ul li .btn-sidebar-home .text-logo {
+    font-size: 1.8em;
+  }
+  .ContainerImages {
+    columns: 2;
+  }
+  .name,
+  .date,
+  .fav {
+    font-size: 1em;
+  }
+  .fav {
+    font-size: 1.8em;
+  }
+  .Menu {
+    font-size: 2em;
+  }
+  .Options {
+    top: 2.5rem;
+  }
+  .Options ol li button {
+    font-size: 1.8em;
+    padding: 0.5rem 0.5rem;
+  }
+  .Options ol li button .icon {
+    margin-right: 0.6rem;
+  }
+
+  /*--------------------------MODAL OPEN IMAGE----------------------------*/
+  .ContainerImages .card {
+    overflow: visible;
+    border-radius: 0;
+  }
+  .container-modal .content-modal img {
+    height: 100%;
+    width: 100vw;
+  }
+  .container-modal .content-modal button i {
+    font-size: 3.5em;
+  }
+}
