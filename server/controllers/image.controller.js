@@ -67,7 +67,8 @@ export const deleteImageback = async (req, res) => {
 
 export const getImages = async (req, res) => {
   try {
-    const images = await Image.find();
+    const { author } = req.query;
+    const images = await Image.find({ author: author });
     return res.send(images);
   } catch (error) {
     console.log(error);

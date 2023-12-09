@@ -6,7 +6,7 @@ import ModalImage from "../components/ModalImage";
 import axios from "axios";
 
 const Dumps = () => {
-  const { dumps, setDumps } = contextProvider();
+  const { dumps, setDumps, section } = contextProvider();
   const [isModal, setIsModal] = useState({
     ismodal: false,
     image: "",
@@ -17,7 +17,9 @@ const Dumps = () => {
   });
   const getDumps = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/api/dumps/");
+      const res = await axios.get(
+        `http://localhost:4000/api/dumps/?author=${section[0]._id}`
+      );
       setDumps(res.data);
     } catch (error) {
       console.log(error);

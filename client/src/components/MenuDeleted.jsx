@@ -3,7 +3,7 @@ import axios from "axios";
 import { contextProvider } from "./contextApi";
 
 const MenuDeleted = ({ id }) => {
-  const { dumps, setDumps, images, setImages } = contextProvider();
+  const { dumps, setDumps, images, setImages, section } = contextProvider();
   const updateDom = () => {
     const filterImages = dumps.filter((item) => item._id !== id);
     setDumps(filterImages);
@@ -11,7 +11,7 @@ const MenuDeleted = ({ id }) => {
   const Recovery = async (id) => {
     await axios.delete("http://localhost:4000/api/dumps/recovery/" + id);
     const res = await axios
-      .get("http://localhost:4000/api/images/")
+      .get(`http://localhost:4000/api/images/?author=${section[0]._id}`)
       .then((response) => {
         setImages(response.data);
         updateDom();

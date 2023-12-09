@@ -170,4 +170,17 @@
   .Options ol li button .icon {
     margin-right: 0.2rem;
   }
+
+  /*--------------------------MODAL OPEN IMAGE----------------------------*/
+  .ContainerImages .card {
+    overflow: visible;
+    border-radius: 0;
+  }
+  .container-modal .content-modal img {
+    height: 100%;
+    width: 100vw;
+  }
+  .container-modal .content-modal button i {
+    font-size: 3.5em;
+  }
 }

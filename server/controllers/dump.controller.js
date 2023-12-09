@@ -5,7 +5,8 @@ import User from "../models/User.js";
 
 export const getDumps = async (req, res) => {
   try {
-    const dumps = await Dump.find();
+    const { author } = req.query;
+    const dumps = await Dump.find({ author: author });
     return res.send(dumps);
   } catch (error) {
     console.log(error);

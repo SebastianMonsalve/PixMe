@@ -17,14 +17,22 @@ export const createUser = async (req, res) => {
       return res.send("Las contraseñas deben coincidir");
     const userCreated = await newUser.save();
 
-    const sendEmail = `
-    <p>hola ${userCreated.name}</p>
-    <a href="http://localhost:5173/login">Comenzar</a>`;
+    const sendEmailWelcome = `
+    <h1 style="text-align: center; padding: 20px; background-color: #D1272E; color: white; text-align: center; font-size: 30px;">¡BIENVENID@ A PIXME!</h1>
+    <table>
+      <tr>
+        <td>
+          <p style="padding: 0 40px; color: black;">Estamos encantados de tenerte como parte de nuestra comunidad. Tu cuenta ha sido creada con éxito. </p>
+          <p style="padding: 5px 40px; color: black;">Atentamente, <br>
+          <span style="font-weight: bold;">El Equipo de PixMe</span> </p>
+        </td>
+      </tr>
+    </table>`;
     const info = await transporter.sendMail({
       from: '"PixMe Welcome" <pixmerecovery@gmail.com>',
       to: `${userCreated.email}`,
       subject: "Welcome",
-      html: sendEmail,
+      html: sendEmailWelcome,
     });
 
     return res.send(userCreated);
@@ -103,14 +111,44 @@ export const getUserRecovery = async (req, res) => {
     const { email } = req.body;
     const userEmail = await User.findOne({ email: email });
     const sendEmail = `
-      <h1 style="padding: 20px; background-color: #D1272E; color: white; text-align: center; font-size: 30px;">PIXME</h1>
-      <h3 style="padding: 0 40px; color: black";>Hola ${userEmail.name},</h3>
-      <p style="padding: 0 40px; color: black";>Hemos recibido una solicitud para usar esta dirección de correo electrónico como método de recuperación de contraseña para la cuenta asociada a este correo. </p>
-      <h1 style="padding: 0 40px; text-align: center; font-size: 30px;">${code}</h1>
-      <p style="padding: 0 40px; color: black";>Deberás ingresar este código en la página habilitada específicamente para esta función. Una vez que ingreses el código correctamente, podrás continuar con el proceso de recuperación de tu cuenta. <br> <br>
-        En caso de que no hayas solicitado este código o no reconozcas esta solicitud, por favor ignora este mensaje por motivos de seguridad. <br> <br>
-        Atentamente, <br>
-        El Equipo de PixMe</p>
+    <table>
+      <tr>
+        <td>
+          <h1 style="padding: 20px; background-color: #D1272E; color: white; text-align: center; font-size: 30px;">PIXME</h1>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <h3 style="padding: 0 40px; color: black;">Hola ${userEmail.name},</h3>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p style="padding: 0 40px; color: black;">Hemos recibido una solicitud para usar esta dirección de correo electrónico como método de recuperación de contraseña para la cuenta asociada a este correo. </p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <h1 style="padding: 0 40px; text-align: center; font-size: 30px;">${code}</h1>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p style="padding: 0 40px; color: black;">Deberás ingresar este código en la página habilitada específicamente para esta función. Una vez que ingreses el código correctamente, podrás continuar con el proceso de recuperación de tu cuenta. </p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p style="padding: 0 40px; color: black;">En caso de que no hayas solicitado este código o no reconozcas esta solicitud, por favor ignora este mensaje por motivos de seguridad. </p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p style="padding: 5px 40px; color: black;">Atentamente, <br>
+          <span style="font-weight: bold;">El Equipo de PixMe</span> </p>
+        </td>
+      </tr>
+    </table>
     `;
     const info = await transporter.sendMail({
       from: '"PixMe Recovery" <pixmerecovery@gmail.com>',
